@@ -37,4 +37,4 @@ namespace VulkanCookbook {
     }
   }
 
-} // namespace VulkanCookbook
+} //namespace VulkanCookbook

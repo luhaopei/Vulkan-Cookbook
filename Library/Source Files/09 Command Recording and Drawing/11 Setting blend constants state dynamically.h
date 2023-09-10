@@ -18,7 +18,7 @@
 //
 // Vulkan Cookbook
 // ISBN: 9781786468154
-// © Packt Publishing Limited
+// ï¿½ Packt Publishing Limited
 //
 // Author:   Pawel Lapinski
 // LinkedIn: https://www.linkedin.com/in/pawel-lapinski-84522329
@@ -36,6 +36,6 @@ namespace VulkanCookbook {
   void SetBlendConstantsStateDynamically( VkCommandBuffer              command_buffer,
                                           std::array<float, 4> const & blend_constants );
 
-} // namespace VulkanCookbook
+} //namespace VulkanCookbook
 
 #endif // SETTING_BLEND_CONSTANTS_STATE_DYNAMICALLY

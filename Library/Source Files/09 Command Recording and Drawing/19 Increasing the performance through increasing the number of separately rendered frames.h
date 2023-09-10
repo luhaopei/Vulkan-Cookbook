@@ -90,6 +90,6 @@ namespace VulkanCookbook {
                                                                                 std::function<bool(VkCommandBuffer, uint32_t, VkFramebuffer)>   record_command_buffer,
                                                                                 std::vector<FrameResources>                                   & frame_resources );
 
-} // namespace VulkanCookbook
+} //namespace VulkanCookbook
 
 #endif // INCREASING_THE_PERFORMANCE_THROUGH_INCREASING_THE_NUMBER_OF_SEPARATELY_RENDERED_FRAMES

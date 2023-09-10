@@ -18,7 +18,7 @@
 //
 // Vulkan Cookbook
 // ISBN: 9781786468154
-// © Packt Publishing Limited
+// ï¿½ Packt Publishing Limited
 //
 // Author:   Pawel Lapinski
 // LinkedIn: https://www.linkedin.com/in/pawel-lapinski-84522329
@@ -44,6 +44,6 @@ namespace VulkanCookbook {
                                             VkStencilOpState                        back_stencil_test_parameters,
                                             VkPipelineDepthStencilStateCreateInfo & depth_and_stencil_state_create_info );
 
-} // namespace VulkanCookbook
+} //namespace VulkanCookbook
 
 #endif // SPECIFYING_PIPELINE_DEPTH_AND_STENCIL_STATE

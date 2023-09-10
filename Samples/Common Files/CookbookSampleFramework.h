@@ -22,7 +22,7 @@
 //
 // Vulkan Cookbook
 // ISBN: 9781786468154
-// © Packt Publishing Limited
+// ï¿½ Packt Publishing Limited
 //
 // Author:   Pawel Lapinski
 // LinkedIn: https://www.linkedin.com/in/pawel-lapinski-84522329
@@ -33,9 +33,12 @@
 #define COOKBOOK_SAMPLE_FRAMEWORK
 
 #include <chrono>
+
 #include "AllHeaders.h"
 #include "OS.h"
 #include "Tools.h"
+#include <gtkmm.h>
+#include "GtkVulkanApplication.h"
 
 namespace VulkanCookbook {
 
@@ -154,9 +157,7 @@ namespace VulkanCookbook {
                                    VkImageUsageFlags depth_attachment_usage = VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT ) final;
     virtual void  Deinitialize() final;
   };
-
-  // Application starting point implementation
-
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 #define VULKAN_COOKBOOK_SAMPLE_FRAMEWORK( title, x, y, width, height, sample_type )   \
                                                                                       \
   int main() {                                                                        \
@@ -167,7 +168,16 @@ namespace VulkanCookbook {
                                                                                       \
     return 0;                                                                         \
   }
+#elif VK_USE_PLATFORM_WAYLAND_KHR
+// Application starting point implementation
+#define VULKAN_COOKBOOK_SAMPLE_FRAMEWORK( title, x, y, width, height, sample_type )   \
+                                                                                    \
+  int main(int argc,char ** argv) {                                                    \
+    sample_type sample;                                                               \
+    auto application =  GtkVulkanApplication::create("Vulkan Cookbook #" title,  x, y, width, height, sample);            \
+    return application->run(argc, argv);                                                                                  \
+    }                                                                                                                      \
 
-} // namespace VulkanCookbook
-
+#endif
+}
 #endif // COOKBOOK_SAMPLE_FRAMEWORK

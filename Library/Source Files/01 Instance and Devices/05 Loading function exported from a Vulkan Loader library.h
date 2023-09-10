@@ -35,6 +35,6 @@ namespace VulkanCookbook {
 
   bool LoadFunctionExportedFromVulkanLoaderLibrary( LIBRARY_TYPE const & vulkan_library );
 
-} // namespace VulkanCookbook
+} //namespace VulkanCookbook
 
 #endif // LOADING_FUNCTION_EXPORTED_FROM_A_VULKAN_LOADER_LIBRARY

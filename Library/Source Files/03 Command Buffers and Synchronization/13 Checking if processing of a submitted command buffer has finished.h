@@ -18,7 +18,7 @@
 //
 // Vulkan Cookbook
 // ISBN: 9781786468154
-// © Packt Publishing Limited
+// ï¿½ Packt Publishing Limited
 //
 // Author:   Pawel Lapinski
 // LinkedIn: https://www.linkedin.com/in/pawel-lapinski-84522329
@@ -42,6 +42,6 @@ namespace VulkanCookbook {
                                                              uint64_t                         timeout,
                                                              VkResult                       & wait_status );
 
-} // namespace VulkanCookbook
+} //namespace VulkanCookbook
 
 #endif // CHECKING_IF_PROCESSING_OF_A_SUBMITTED_COMMAND_BUFFER_HAS_FINISHED

@@ -22,7 +22,7 @@
 //
 // Vulkan Cookbook
 // ISBN: 9781786468154
-// © Packt Publishing Limited
+// ï¿½ Packt Publishing Limited
 //
 // Author:   Pawel Lapinski
 // LinkedIn: https://www.linkedin.com/in/pawel-lapinski-84522329
@@ -234,15 +234,31 @@ namespace VulkanCookbook {
       if( !CreateFence( *LogicalDevice, true, *drawing_finished_fence ) ) {
         return false;
       }
+//        VkDestroyer(VkFramebuffer)  framebuffer = VkDestroyer(VkFramebuffer)();
+//        FrameResources fr(command_buffer[0],
+//                          image_acquired_semaphore ,
+//                          ready_to_present_semaphore ,
+//                       drawing_finished_fence ,
+//                          depth_attachment,
+//                          framebuffer );
 
-      FramesResources.emplace_back(
-        command_buffer[0],
-        std::move( image_acquired_semaphore ),
-        std::move( ready_to_present_semaphore ),
-        std::move( drawing_finished_fence ),
-        std::move( depth_attachment ),
-        VkDestroyer(VkFramebuffer)()
-      );
+//      FramesResources.emplace_back(
+//              std::move(fr)
+//
+//      );
+        VkDestroyer(VkFramebuffer)  framebuffer =  VkDestroyer(VkFramebuffer)();
+        FramesResources.emplace_back(
+                command_buffer[0],
+                image_acquired_semaphore,
+                ready_to_present_semaphore,
+                drawing_finished_fence,
+                depth_attachment,
+                //std::move(image_acquired_semaphore),
+                //std::move(ready_to_present_semaphore),
+                //std::move(drawing_finished_fence),
+                //std::move(depth_attachment),
+                framebuffer
+                );
     }
 
     if( !CreateSwapchain( swapchain_image_usage, use_depth, depth_attachment_usage ) ) {
@@ -315,4 +331,4 @@ namespace VulkanCookbook {
     }
   }
 
-} // namespace VulkanCookbook
+} //namespace VulkanCookbook

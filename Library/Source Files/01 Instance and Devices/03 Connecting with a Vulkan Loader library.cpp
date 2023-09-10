@@ -44,4 +44,4 @@ namespace VulkanCookbook {
     return true;
   }
 
-} // namespace VulkanCookbook
+} //namespace VulkanCookbook

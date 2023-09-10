@@ -50,6 +50,6 @@ namespace VulkanCookbook {
                                       VkRenderPass                                                    render_pass,
                                       VkDestroyer(VkFramebuffer)                                    & framebuffer );
 
-} // namespace VulkanCookbook
+} //namespace VulkanCookbook
 
 #endif // PREPARING_A_SINGLE_FRAME_OF_ANIMATION

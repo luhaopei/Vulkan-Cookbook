@@ -36,6 +36,6 @@ namespace VulkanCookbook {
   void ExecuteSecondaryCommandBufferInsidePrimaryCommandBuffer( VkCommandBuffer                      primary_command_buffer,
                                                                 std::vector<VkCommandBuffer> const & secondary_command_buffers );
 
-} // namespace VulkanCookbook
+} //namespace VulkanCookbook
 
 #endif // EXECUTING_SECONDARY_COMMAND_BUFFER_INSIDE_A_PRIMARY_COMMAND_BUFFER

@@ -45,6 +45,6 @@ namespace VulkanCookbook {
                                               std::vector<VkSemaphore>                                    signal_semaphores,
                                               VkFence                                                     fence );
 
-} // namespace VulkanCookbook
+} //namespace VulkanCookbook
 
 #endif // RECORDING_COMMAND_BUFFERS_ON_MULTIPLE_THREADS

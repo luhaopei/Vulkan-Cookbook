@@ -18,7 +18,7 @@
 //
 // Vulkan Cookbook
 // ISBN: 9781786468154
-// © Packt Publishing Limited
+// ï¿½ Packt Publishing Limited
 //
 // Author:   Pawel Lapinski
 // LinkedIn: https://www.linkedin.com/in/pawel-lapinski-84522329
@@ -47,6 +47,6 @@ namespace VulkanCookbook {
                                                      VkDescriptorPool             & descriptor_pool,
                                                      std::vector<VkDescriptorSet> & descriptor_sets );
 
-} // namespace VulkanCookbook
+} //namespace VulkanCookbook
 
 #endif // CREATING_DESCRIPTORS_WITH_A_TEXTURE_AND_A_UNIFORM_BUFFER

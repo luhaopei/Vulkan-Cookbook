@@ -2,24 +2,27 @@
 // Created by luhaopei on 23-9-7.
 //
 
-#ifndef VULKANCOOKBOOK_GTKAPPLICATION_H
-#define VULKANCOOKBOOK_GTKAPPLICATION_H
+#ifndef VULKANCOOKBOOK_GTKVULKANAPPLICATION_H
+#define VULKANCOOKBOOK_GTKVULKANAPPLICATION_H
+#include "Common.h"
 #include <gtkmm.h>
+#include "GtkAppWindow.h"
 
 namespace VulkanCookbook {
+
     class VulkanCookbookSampleBase;
-    class GtkApplication : Gtk::Application {
-    private:
-        GtkApplication(const char * title_, int x, int y, int width, int height, VulkanCookbookSampleBase &sample);
+
+    class GtkVulkanApplication :public Gtk::Application {
+    protected:
+        GtkVulkanApplication(const char * title_, int x, int y, int width, int height, VulkanCookbookSampleBase &sample);
     public:
-        static Glib::RefPtr<GtkApplication> create(const char * title, int x, int y, int width, int height, VulkanCookbookSampleBase &sample);
+        static Glib::RefPtr<GtkVulkanApplication> create(const char * title, int x, int y, int width, int height, VulkanCookbookSampleBase &sample);
     protected:
         void on_activate() override;
-        void on_open(const Gio::Application::type_vec_files& file,
-                     const Glib::ustring&hint ) override;
+        //void on_startup() override;
     private:
-        void create_window(const Glib::RefPtr<Gio::File>& file = Glib::RefPtr<Gio::File>());
-
+        GtkAppWindow *create_window();
+        void on_window_hide(Gtk::Window* window);
     private:
         const char * title_;
         int x_;
@@ -30,4 +33,4 @@ namespace VulkanCookbook {
     };
 
 } // namespace VulkanCookbook
-#endif //VULKANCOOKBOOK_GTKAPPLICATION_H
+#endif //VULKANCOOKBOOK_GTKVULKANAPPLICATION_H

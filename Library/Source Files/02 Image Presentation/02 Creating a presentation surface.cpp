@@ -18,7 +18,7 @@
 //
 // Vulkan Cookbook
 // ISBN: 9781786468154
-// © Packt Publishing Limited
+// ï¿½ Packt Publishing Limited
 //
 // Author:   Pawel Lapinski
 // LinkedIn: https://www.linkedin.com/in/pawel-lapinski-84522329
@@ -29,6 +29,22 @@
 #include "02 Image Presentation/02 Creating a presentation surface.h"
 
 namespace VulkanCookbook {
+
+    bool CheckPresentationSurface(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, struct wl_display* display)
+    {
+        VkBool32 result = VK_FALSE;
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+
+#elif VK_USE_PLATFORM_XLIB_KHR
+
+#elif VK_USE_PLATFORM_XCB_KHR
+
+#elif VK_USE_PLATFORM_WAYLAND_KHR
+        result = vkGetPhysicalDeviceWaylandPresentationSupportKHR(physicalDevice, queueFamilyIndex, display);
+#endif
+        return result;
+
+    }
 
   bool CreatePresentationSurface( VkInstance         instance,
                                   WindowParameters   window_parameters,
@@ -47,7 +63,7 @@ namespace VulkanCookbook {
 
     result = vkCreateWin32SurfaceKHR( instance, &surface_create_info, nullptr, &presentation_surface );
 
-#elif defined VK_USE_PLATFORM_XLIB_KHR
+#elif VK_USE_PLATFORM_XLIB_KHR
 
     VkXlibSurfaceCreateInfoKHR surface_create_info = {
       VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR,   // VkStructureType                 sType
@@ -59,7 +75,7 @@ namespace VulkanCookbook {
 
     result = vkCreateXlibSurfaceKHR( instance, &surface_create_info, nullptr, &presentation_surface );
 
-#elif defined VK_USE_PLATFORM_XCB_KHR
+#elif VK_USE_PLATFORM_XCB_KHR
 
     VkXcbSurfaceCreateInfoKHR surface_create_info = {
       VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR,    // VkStructureType                 sType
@@ -70,7 +86,18 @@ namespace VulkanCookbook {
     };
 
     result = vkCreateXcbSurfaceKHR( instance, &surface_create_info, nullptr, &presentation_surface );
+#elif VK_USE_PLATFORM_WAYLAND_KHR
 
+    VkWaylandSurfaceCreateInfoKHR surface_create_info = {
+      VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR,    // VkStructureType                 sType
+      nullptr,                                          // const void                    * pNext
+      0,                                                // VkWaylandSurfaceCreateFlagsKHR      flags
+      window_parameters.display,                          // wl_display*                display;
+      window_parameters.surface                          // wl_surface*                surface;
+    };
+
+
+    result = vkCreateWaylandSurfaceKHR(instance, &surface_create_info, nullptr, &presentation_surface);
 #endif
 
     if( (VK_SUCCESS != result) ||
@@ -81,4 +108,4 @@ namespace VulkanCookbook {
     return true;
   }
 
-} // namespace VulkanCookbook
+} //namespace VulkanCookbook
