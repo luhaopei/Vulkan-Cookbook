@@ -93,7 +93,7 @@ namespace VulkanCookbook {
 
     }
     bool GtkAppWindow::on_rendering(const Glib::RefPtr<Gdk::GLContext>&content){
-
+            return false;
     }
 
     void GtkAppWindow::on_drawing_erea_draw(const Cairo::RefPtr<Cairo::Context>&, int, int){
@@ -102,7 +102,7 @@ namespace VulkanCookbook {
 
     void GtkAppWindow::on_drawing_area_realized() {
         std::cout << "on_drawing_area_realized" << std::endl;
-        auto gtk_native = this->get_native();
+ //       auto gtk_native = this->get_native();
 //        if(gtk_native) {
 //            auto gdk_surface = gtk_native->get_surface();
 //            if (gdk_surface) {
@@ -136,6 +136,7 @@ namespace VulkanCookbook {
             sample_.Draw();
             sample_.MouseReset();
         }
+        return true;
     }
 
 }
