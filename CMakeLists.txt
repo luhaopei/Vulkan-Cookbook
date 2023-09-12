@@ -41,9 +41,9 @@ set( CMAKE_SUPPRESS_REGENERATION true )
 find_package(PkgConfig REQUIRED)
 #pkg_check_modules(GTK4 REQUIRED IMPORTED_TARGET gtk4)
 
-pkg_check_modules(GTKMM REQUIRED gtkmm-4.0)
-include_directories(${GTKMM_INCLUDE_DIRS})
-link_directories(${GTKMM_LIBRARY_DIRS})
+#pkg_check_modules(GTKMM REQUIRED gtkmm-4.0)
+#include_directories(${GTKMM_INCLUDE_DIRS})
+#link_directories(${GTKMM_LIBRARY_DIRS})
 
 find_package(OpenGL REQUIRED COMPONENTS OpenGL EGL GLX)
 include_directories(${OPENGL_INCLUDE_DIRS})

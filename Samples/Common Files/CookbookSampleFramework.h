@@ -37,7 +37,6 @@
 #include "AllHeaders.h"
 #include "OS.h"
 #include "Tools.h"
-#include <gtkmm.h>
 #include "VulkanApplication.h"
 
 namespace VulkanCookbook {
