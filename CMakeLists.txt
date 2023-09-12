@@ -28,8 +28,12 @@
 cmake_minimum_required (VERSION 3.0)
 project( "VulkanCookbook" )
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 set_property( GLOBAL PROPERTY USE_FOLDERS ON )
 set( CMAKE_SUPPRESS_REGENERATION true )
+
+
 
 ###############################################################
 # Environment setup                                           #
@@ -47,17 +51,6 @@ if(OPENGL_FOUND)
     message("Found OpenGL in the current environment!")
 else()
     message("Error: No OpenGL found.")
-endif()
-
-message("OpenGL include dirs" )
-message("${OPENGL_INCLUDE_DIR}")
-message("EGL include dirs" )
-message("${OPENGL_EGL_INCLUDE_DIRS}")
-
-if (OpenGL_EGL_FOUND)
-    message("EGL Found!")
-else()
-    message("EGL Not Found!")
 endif()
 
 if( CMAKE_BUILD_TYPE STREQUAL "" )
@@ -125,7 +118,10 @@ list_recipes_files( "*.h" "Header Files" LIBRARY_HEADER_FILES )
 list_recipes_files( "*.cpp" "" LIBRARY_SOURCE_FILES )
 
 # Recipes Library generation
-add_library( CookbookLibrary ${EXTERNAL_HEADER_FILES} ${LIBRARY_COMMON_HEADER_FILES} ${LIBRARY_COMMON_SOURCE_FILES} ${LIBRARY_HEADER_FILES} ${LIBRARY_SOURCE_FILES} "Samples/Common Files/GtkAppWindow.cpp" "Samples/Common Files/GtkAppWindow.h" "Samples/Common Files/GtkVulkanApplication.cpp" "Samples/Common Files/GtkVulkanApplication.h")
+add_library( CookbookLibrary ${EXTERNAL_HEADER_FILES} ${LIBRARY_COMMON_HEADER_FILES} ${LIBRARY_COMMON_SOURCE_FILES} ${LIBRARY_HEADER_FILES} ${LIBRARY_SOURCE_FILES} "Samples/Common Files/VulkanApplication.cpp" "Samples/Common Files/VulkanApplication.h"
+		"Samples/Common Files/xdg-decoration-code.c"
+		"Samples/Common Files/xdg-shell-code.c"
+		)
 target_link_libraries( CookbookLibrary ${PLATFORM_LIBRARY}  ${GTKMM_LIBRARIES}) # ${GTK4_LIBRARIES}
 target_include_directories( CookbookLibrary PUBLIC "External" "Library/Common Files" "Library/Source Files" )
 
@@ -156,22 +152,6 @@ macro( list_samples )
 		ENDFOREACH()
 	ENDFOREACH()
 endmacro()
-
-#include_directories("/usr/lib/x86_64-linux-gnu/graphene-1.0/include/")
-#include_directories("/usr/include/graphene-1.0/")
-#include_directories("/usr/include/gdk-pixbuf-2.0/")
-#include_directories("/usr/include/harfbuzz/")
-#include_directories("/usr/include/pango-1.0/")
-#include_directories("/usr/include/cairo")
-#include_directories("/usr/local/lib/x86_64-linux-gnu/glib-2.0/include/")
-#include_directories("/usr/local/include/glib-2.0")
-#include_directories("/usr/local/include/gtk-4.0")
-
-
-#include_directories(${GTK4_INCLUDE_DIRS})
-#link_directories(${GTK4_LIBRARY_DIRS})
-
-#link_libraries("/usr/local/lib/x86_64-linux-gnu/libgtk-4.so")
 
 # Sample projects generation
 list_samples()

@@ -38,7 +38,7 @@
 #include "OS.h"
 #include "Tools.h"
 #include <gtkmm.h>
-#include "GtkVulkanApplication.h"
+#include "VulkanApplication.h"
 
 namespace VulkanCookbook {
 
@@ -174,10 +174,18 @@ namespace VulkanCookbook {
                                                                                     \
   int main(int argc,char ** argv) {                                                    \
     sample_type sample;                                                               \
-    auto application =  GtkVulkanApplication::create("Vulkan Cookbook #" title,  x, y, width, height, sample);            \
-    return application->run(argc, argv);                                                                                  \
+    auto app =  VulkanApplication("Vulkan Cookbook #" title,  x, y, width, height, sample); \
+    app.init();                                                                       \
+    app.create_window();                                                              \
+    app.init_vk();\
+    app.run();                                                                        \
+    return 0;\
     }                                                                                                                      \
 
 #endif
 }
 #endif // COOKBOOK_SAMPLE_FRAMEWORK
+
+//application.init(argc, argv);                                                   \
+      application.create_window();
+//       return application->run(argc, argv);                                              \
